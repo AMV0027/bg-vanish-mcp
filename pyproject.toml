@@ -1,13 +1,29 @@
 [project]
 name = "bg-vanish-mcp"
 version = "0.1.0"
-description = "MCP server for removing image backgrounds locally using rembg"
+description = "MCP server for removing image backgrounds locally using rembg and DirectML"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "mcp>=1.0.0",
     "rembg>=2.0.50",
     "pillow>=10.0.0",
+]
+
+[project.optional-dependencies]
+dml = [
+    "onnxruntime-directml>=1.16.0",
+]
+gpu = [
+    "onnxruntime-gpu>=1.16.0",
+]
+
+[project.scripts]
+bg-vanish-mcp = "bg_vanish_mcp:main"
+
+[tool.hatch.build.targets.wheel]
+include = [
+    "bg_vanish_mcp.py",
 ]
 
 [build-system]

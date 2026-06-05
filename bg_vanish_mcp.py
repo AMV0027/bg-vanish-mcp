@@ -108,5 +108,8 @@ def remove_background_base64(image_base64: str) -> str:
     except Exception as e:
         return f"Error removing background from base64 data: {str(e)}"
 
-if __name__ == "__main__":
+def main():
     mcp.run()
+
+if __name__ == "__main__":
+    main()

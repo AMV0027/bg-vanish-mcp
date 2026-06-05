@@ -19,8 +19,8 @@ def main():
         
     print("Importing server and running background removal...")
     try:
-        # Import tools from server
-        from server import remove_background
+        # Import tools from bg_vanish_mcp
+        from bg_vanish_mcp import remove_background
         
         result = remove_background(test_file, output_file)
         print("Result:", result)
