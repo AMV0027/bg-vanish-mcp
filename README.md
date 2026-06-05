@@ -1,5 +1,7 @@
 # Background Vanish MCP Server
 
+![BG-Vanish MCP Header Banner](bg_vanish_mcp_header.png)
+
 A local Model Context Protocol (MCP) server that provides tools for isolating backgrounds from images (creating transparent PNGs). It runs entirely locally using `rembg` (U2NET) and the official `mcp` Python SDK.
 
 ## Features
