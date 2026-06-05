@@ -1,0 +1,15 @@
+[project]
+name = "bg-vanish-mcp"
+version = "0.1.0"
+description = "MCP server for removing image backgrounds locally using rembg"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.0.0",
+    "rembg>=2.0.50",
+    "pillow>=10.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
