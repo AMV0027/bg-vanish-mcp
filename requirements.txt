@@ -1,0 +1,14 @@
+# Core dependencies
+mcp>=1.0.0
+rembg>=2.0.50
+Pillow>=10.0.0
+
+# --- GPU Acceleration (optional) ---
+# For NVIDIA GPU (CUDA):
+#   onnxruntime-gpu>=1.16.0
+#
+# For Windows with any GPU (AMD, Intel, NVIDIA) via DirectML:
+#   onnxruntime-directml>=1.16.0
+#
+# Set USE_GPU=true environment variable to enable GPU providers.
+# Example: set USE_GPU=true && pip install onnxruntime-directml
