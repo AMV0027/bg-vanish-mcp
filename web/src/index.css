@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+/* ─────────────────────────────
+   Design tokens
+───────────────────────────── */
+:root {
+  --white:   #ffffff;
+  --off:     #fafaf8;
+  --border:  #e8e5e0;
+  --muted:   #9e9a94;
+  --ink:     #1a1a18;
+  --ink-2:   #3d3d38;
+  --ink-3:   #6b6b64;
+  --accent:  #1a1a18;  /* monochrome accent = near-black */
+  --green:   #2d6a4f;  /* one restrained green for badges only */
+}
+
+/* ─────────────────────────────
+   Reset & base
+───────────────────────────── */
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Horizontal squish for the modern condensed look */
+  transform: scaleX(0.85);
+  transform-origin: top center;
+  width: calc(100% / 0.85);
+  position: relative;
+  left: calc((100% - 100% / 0.85) / 2);
+  overflow-x: hidden;
+}
+
+/* ─────────────────────────────
+   Typography
+───────────────────────────── */
+.font-display {
+  font-family: 'Lora', Georgia, serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+/* ─────────────────────────────
+   Layout
+───────────────────────────── */
+.container {
+  max-width: 80rem; /* max-w-7xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 640px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+
+/* ─────────────────────────────
+   Dividers
+───────────────────────────── */
+.rule {
+  height: 1px;
+  background: var(--border);
+  border: none;
+}
+
+/* ─────────────────────────────
+   Badges
+───────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  border: 1px solid var(--border);
+  color: var(--ink-3);
+  background: var(--off);
+  text-decoration: none;
+  transition: border-color 0.15s;
+  white-space: nowrap;
+}
+.badge:hover { border-color: var(--ink-3); }
+
+.badge-green {
+  background: #f0faf4;
+  border-color: #b7e4c7;
+  color: var(--green);
+}
+
+/* ─────────────────────────────
+   Nav
+───────────────────────────── */
+.nav-root {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: transform 0.28s ease;
+}
+
+/* ─────────────────────────────
+   Sections
+───────────────────────────── */
+.section { padding: 6rem 0; }
+.section-sm { padding: 4rem 0; }
+
+.section-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ─────────────────────────────
+   Cards
+───────────────────────────── */
+.card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--white);
+}
+
+.card-off {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--off);
+}
+
+/* ─────────────────────────────
+   Terminal / Code
+───────────────────────────── */
+.terminal {
+  background: var(--ink);
+  border-radius: 10px;
+  color: #e8e5e0;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ─────────────────────────────
+   Copy button
+───────────────────────────── */
+.copy-wrap { position: relative; }
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.15s;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #9e9a94;
+  font-size: 0.65rem;
+  font-family: 'Inter', sans-serif;
+  padding: 0.18rem 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+.copy-wrap:hover .copy-btn { opacity: 1; }
+.copy-btn.light {
+  background: rgba(0,0,0,0.04);
+  border-color: var(--border);
+  color: var(--ink-3);
+}
+.copy-wrap:hover .copy-btn.light { opacity: 1; }
+
+/* ─────────────────────────────
+   Accordion
+───────────────────────────── */
+details summary { list-style: none; cursor: pointer; }
+details summary::-webkit-details-marker { display: none; }
+.chevron { transition: transform 0.2s ease; flex-shrink: 0; }
+details[open] .chevron { transform: rotate(180deg); }
+
+/* ─────────────────────────────
+   Filter buttons
+───────────────────────────── */
+.filter-btn {
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  color: var(--ink-3);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  letter-spacing: 0.01em;
+}
+.filter-btn:hover { border-color: var(--ink-3); color: var(--ink); }
+.filter-btn.active {
+  background: var(--ink);
+  color: var(--white);
+  border-color: var(--ink);
+}
+
+/* ─────────────────────────────
+   Step image frame (checkerboard for transparency demo)
+───────────────────────────── */
+.checker-frame {
+  background-image:
+    linear-gradient(45deg, #e8e5e0 25%, transparent 25%),
+    linear-gradient(-45deg, #e8e5e0 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e8e5e0 75%),
+    linear-gradient(-45deg, transparent 75%, #e8e5e0 75%);
+  background-size: 10px 10px;
+  background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
+  background-color: #f5f3ef;
+}
+
+/* ─────────────────────────────
+   Animations — very minimal
+───────────────────────────── */
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fadein { animation: fadein 0.5s ease-out forwards; }
+.d1 { animation-delay: 0.08s; opacity: 0; }
+.d2 { animation-delay: 0.16s; opacity: 0; }
+.d3 { animation-delay: 0.24s; opacity: 0; }
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.blink { animation: blink 1.2s step-start infinite; }
+
+/* ─────────────────────────────
+   Scrollbar
+───────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d0cdc8; border-radius: 3px; }
+
+/* ─────────────────────────────
+   Responsive fix for body scaleX
+───────────────────────────── */
+@media (max-width: 768px) {
+  body {
+    transform: scaleX(0.92);
+    width: calc(100% / 0.92);
+    left: calc((100% - 100% / 0.92) / 2);
+  }
+}
